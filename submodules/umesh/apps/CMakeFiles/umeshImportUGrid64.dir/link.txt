@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/umeshImportUGrid64.dir/importUGrid64.cpp.o -o ../umeshImportUGrid64  ../libumesh.a 

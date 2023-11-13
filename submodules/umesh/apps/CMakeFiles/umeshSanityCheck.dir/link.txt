@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/umeshSanityCheck.dir/sanityCheck.cpp.o -o ../umeshSanityCheck  ../libumesh.a 

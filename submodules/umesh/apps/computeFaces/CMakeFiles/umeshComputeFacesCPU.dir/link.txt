@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/umeshComputeFacesCPU.dir/cpu.cpp.o -o ../../umeshComputeFacesCPU  ../../libumesh.a 

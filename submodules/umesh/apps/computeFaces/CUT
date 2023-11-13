@@ -1,0 +1,30 @@
+#ifdef __CUDA_ARCH__
+}
+__global__
+void computeUniqueVertexOrderLaunch(umesh::Facet *facets, size_t numFacets)
+{
+  size_t jobIdx = size_t(blockIdx.x)*blockDim.x+threadIdx.x;
+  if (jobIdx >= numFacets)
+    return;
+  umesh::computeUniqueVertexOrderKernel(facets[jobIdx]);
+}
+namespace umesh {  
+  void computeUniqueVertexOrder(Facet *facet, size_t numFacets)
+  {
+    size_t blockSize = 1024;
+    size_t numBlocks = divRoundUp(numFacets,blockSize);
+    computeUniqueVertexOrderLaunch<<<numBlocks,blockSize>>>
+      (facet,numFacets);
+  }
+#else
+  void computeUniqueVertexOrder(Facet *facets, size_t numFacets)
+  {
+    owl::parallel_for_blocked
+      (0,numFacets,1024,
+       [&](size_t begin, size_t end) {
+         for (size_t i=begin;i<end;i++)
+           computeUniqueVertexOrderKernel(facets[i]);
+       });
+  }
+#endif
+    

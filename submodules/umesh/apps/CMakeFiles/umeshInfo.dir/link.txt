@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/umeshInfo.dir/info.cpp.o -o ../umeshInfo  ../libumesh.a 

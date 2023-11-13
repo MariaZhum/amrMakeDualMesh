@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/umeshPartitionSpatially.dir/partitionSpatially.cpp.o -o ../umeshPartitionSpatially  ../libumesh.a 

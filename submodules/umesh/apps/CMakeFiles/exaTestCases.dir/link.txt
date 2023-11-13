@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/exaTestCases.dir/exaTestCase.cpp.o -o ../exaTestCases  ../libumesh.a 
