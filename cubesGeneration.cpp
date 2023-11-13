@@ -23,12 +23,10 @@ struct Cube{
 
 //write Cubes for one level into file
 void writeLevel(int level, const std::vector<Cube> &cubes, const std::string &outFileName){
-    
   std::string fileName = outFileName+"_"+std::to_string(level)+".cubes"; 
   std::ofstream out(fileName,std::ios::binary);
   out.write((char*)cubes.data(), cubes.size()*sizeof(cubes[0]));
   std::cout << "done writting " << fileName << std::endl;
-
 }
 
 //prints lower coord of every cube
@@ -39,7 +37,6 @@ void printEveryLower(std::vector <Cube> cubesList, const std::string &lvlName){
   }
   std::cout << " " << std::endl;
 }
-
 
 std::vector <Cube> splitWholeLevel(int currentLevel, std::vector <Cube> &mainCubesVec){
   std::vector <Cube> cubesVec;
@@ -81,14 +78,12 @@ std::vector <Cube> splitWholeLevel(int currentLevel, std::vector <Cube> &mainCub
 
     if(PRINTLOWER)
       printEveryLower(cubesVec, "denseSplittedLevel");
-    
   }
   else{
     std::cout<< "It's already the smallest level!" << std::endl;
   }
   return cubesVec;
 }
-
 
 //gen huge cubes to be able to split them afterwards
 std::vector<Cube> genCubeAsBigAsMC(int level = LEVEL){
@@ -121,7 +116,6 @@ void genDenseSplittedSet(int level = LEVEL){
     mainVec = splitWholeLevel(currLvl, mainVec);
     currLvl--;
   }
-  
 }
 
 //one level of cubes with max density
@@ -135,7 +129,6 @@ void genDense(int level=LEVEL, vec3i worldSize = WORLDSIZEINMC, bool shuffle=SHU
     cubesVec[i].lower.x = i/(absoluteWorldSize.y*absoluteWorldSize.z);
     cubesVec[i].lower.y = (i/absoluteWorldSize.z)%absoluteWorldSize.y;
     cubesVec[i].lower.z = i%absoluteWorldSize.z;
-  
   }
 
   std::cout << cubesVec.size() << " cubes generated for dense lvl " << level << std::endl;
@@ -238,8 +231,7 @@ vec3f genDenseWithBasis(vec3i numCubes, int level, vec3f basis){
         cubesVec[cubeidx].lower.z = (float)(k*cubeWidth)+basis.z;
         //std::cout << cubesVec[cubeidx].lower.x  << " " << cubesVec[cubeidx].lower.y << " " << cubesVec[cubeidx].lower.z <<std::endl;
         cubeidx++;
-      }
-      
+      }     
     }
   }
 
@@ -255,7 +247,6 @@ vec3f genDenseWithBasis(vec3i numCubes, int level, vec3f basis){
 
   return cubesVec.back().lower;
 }
-
 
 //20 dense Levels 
 void denseLvls_20(){
@@ -273,15 +264,11 @@ void denseLvls_20(){
     currentBasis.y = lastCubelower.y + (float)(1<<currentlvl);
     currentBasis.z = lastCubelower.z + (float)(1<<currentlvl);
   }
-
   printf("20 dense levels generated!");
-
 }
 
 
 int main(int argc, char *argv[]){
- 
-
   bool done = false;
   int level;
   vec3i lvlSize;
@@ -340,6 +327,5 @@ int main(int argc, char *argv[]){
       std::cout << "no input" << std::endl;
       break;
     }
-  }
-  
+  }  
 }
